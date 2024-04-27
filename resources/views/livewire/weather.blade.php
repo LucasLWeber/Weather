@@ -33,21 +33,22 @@
     <template x-if="search">
         <div class="flex flex-row justify-between bg-slate-100 h-[100px] w-[1000px] mt-4 p-1">
             @for($i = $actualTime; $i < $actualTime + 6; $i++)
-                @if($i === $actualTime)
-                    <x-temp-icon
-                        date="'now'"
-                        url="$wire.data.current.condition.icon"
-                        temp="$wire.data.current.temp_c"
-                    />
-                @else
-                    <x-temp-icon
-                        date="{{ $i }} + ':00'"
-                        url="$wire.data.forecast.forecastday.0.hour.{{$i}}.condition.icon"
-                        temp="$wire.data.forecast.forecastday.0.hour.{{$i}}.temp_c"
-                    />
-                @endif
+                    @if(isset($forecast[$i]))
+                        @if($i === $actualTime)
+                            <x-temp-icon
+                                date="'now'"
+                                url="{{ $forecast[$i]['icon'] }}"
+                                temp="{{ $forecast[$i]['temp_c'] }}"
+                            />
+                        @else
+                            <x-temp-icon
+                                date="{{ $i }} + ':00'"
+                                url="{{ $forecast[$i]['icon'] }}"
+                                temp="{{ $forecast[$i]['temp_c'] }}"
+                            />
+                       @endif
+                    @endif
             @endfor
         </div>
     </template>
-
 </div>
