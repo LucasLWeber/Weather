@@ -9,10 +9,11 @@ use Illuminate\View\Component;
 class icon extends Component
 {
     public string $name;
-
-    public function __construct()
+    public string $size;
+    public function __construct($name, $size = 'large')
     {
-        //
+        $this->name = $name;
+        $this->size = $size;
     }
 
     /**
