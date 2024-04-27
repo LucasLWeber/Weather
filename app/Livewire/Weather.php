@@ -11,7 +11,7 @@ class Weather extends Component
     use Actions;
 
     public array $data = [];
-    public string $value = 'Esteio';
+    public string $value = '';
     public string $actualTime;
     public array $forecast;
     public int $clicks = 0;
@@ -26,12 +26,9 @@ class Weather extends Component
             $this->actualTime = explode(':', explode(' ', $this->data['location']['localtime'])[1])[0];
             $this->getForecastData();
         } catch (\Exception $e){
-            $this->notification()->error(
-                $title = 'Erro!',
-                $description = 'Wops, error...'
-            );
-            $this->reset();
+            $this->value = '';
             $this->request = false;
+            abort(404);
         }
 
     }
