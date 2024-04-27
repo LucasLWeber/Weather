@@ -25,6 +25,7 @@ class Weather extends Component
             $this->data = WeatherService::handle($this->value);
             $this->actualTime = explode(':', explode(' ', $this->data['location']['localtime'])[1])[0];
             $this->getForecastData();
+            $this->clicks = 0;
         } catch (\Exception $e){
             $this->value = '';
             $this->request = false;
@@ -34,6 +35,8 @@ class Weather extends Component
     }
     public function getForecastData(): array
     {
+        $this->forecast = [];
+
         foreach ($this->data['forecast']['forecastday'][0]['hour'] as $info) {
             $forecastInfo = [
                 'icon' => $info['condition']['icon'],
@@ -54,7 +57,13 @@ class Weather extends Component
 
     public function nextForecast(): void
     {
-        if($this->actualTime + $this->clicks < (24 - 5)){
+        if(count($this->forecast) - $this->actualTime > 6){
+            $forecastsRenderized = 6;
+        } else {
+            $forecastsRenderized = count($this->forecast) - $this->actualTime;
+        }
+
+        if($this->actualTime + $this->clicks + $forecastsRenderized < count($this->forecast)){
             $this->clicks++;
         }
     }
