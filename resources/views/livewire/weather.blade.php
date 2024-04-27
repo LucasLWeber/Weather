@@ -26,13 +26,14 @@
                 <p class="font-semibold text-base mb-2">{{ explode(' ', $data['location']['localtime'])[1] }}</p>
                 <span class="font-light text-base mb-2">Wind: {{ $data['current']['wind_kph'] }} Km/h</span>
                 <span class="font-light text-base mb-2">Humidity: {{ $data['current']['humidity'] }} &percnt;</span>
+                <p class="font-normal text-base mb-2">{{ $data['current']['condition']['text'] }} </p>
             </div>
         @endif
     </div>
 
 
     @if($request)
-        <div class="flex flex-row justify-between bg-slate-100 h-[100px] w-[1000px] mt-4 p-1">
+        <div class="flex flex-row justify-between bg-slate-100 h-[100px] w-[1000px] mt-6 p-1">
             @for($i = $actualTime; $i < $actualTime + 6; $i++)
                     @if(isset($forecast[$i]))
                         <x-temp-icon

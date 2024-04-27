@@ -1,6 +1,6 @@
 # Weather Project
 
-Projeto consumindo [Weather API](https://www.weatherapi.com/) onde o usuário insere sua cidade e o projeto devolve a previsão do tempo para as próximas horas.
+Projeto consumindo [Weather API](https://www.weatherapi.com/) onde o usuário insere sua cidade e o projeto devolve a previsão do tempo do dia.
 
 ## Tecnologias utilizadas
 
@@ -15,3 +15,9 @@ Projeto consumindo [Weather API](https://www.weatherapi.com/) onde o usuário in
 ![Alpine](https://img.shields.io/badge/alpine-%232D323E.svg?style=for-the-badge&logo=alpine.js&logoColor=white)
 
 </div>
+
+## Gif da aplicação
+<img src="./gif.gif" width="1920"/>
+
+
+
